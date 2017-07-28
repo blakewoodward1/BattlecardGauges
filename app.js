@@ -13,12 +13,13 @@ domo.get('/data/v1/CompanyInfo')
         document.getElementById('Logo').innerHTML = '<img id="logo" src="' + CompanyInfo[0]['logo_url'] + '" alt="Company Logo" height="60" max-width="auto">';
 
         // document.body.style.background = "linear-gradient(0deg, " + CompanyInfo[0]['Primary_HEX'] + ", white 70%)";
-        if (CompanyInfo[0]['Primary_HEX'].indexOf("Empty") >= 0) {
+        if (CompanyInfo[0]['Primary_HEX'].indexOf("Empty") <= 0) {
             var hexCode = '#99ccee'
-            console.log('No hex provided')
+            // console.log(CompanyInfo[0]['Primary_HEX'])
+            // console.log('No hex provided')
         } else {
             var hexCode = CompanyInfo[0]['Primary_HEX']
-            console.log('Hex provided')
+            // console.log('Hex provided')
         }
 
 
