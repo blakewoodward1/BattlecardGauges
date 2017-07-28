@@ -1,0 +1,16 @@
+{
+  "name": "BattlecardCommand",
+  "version": "1.0.0",
+  "size": {
+    "width": 5,
+    "height": 2
+  },
+  "mapping": [
+    {
+      "dataSetId": "e5caa80c-244a-4110-8027-e77439ae5514",
+      "alias": "CompanyInfo",
+      "fields": []
+    }
+  ],
+  "id": "46aa3ca6-d377-4bcb-b4e5-6185c06e2190"
+}

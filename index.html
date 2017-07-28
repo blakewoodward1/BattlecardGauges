@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="hover.css" />
+    <link href="https://fonts.googleapis.com/css?family=Abel|Raleway" rel="stylesheet">
+  </head>
+  <body>
+
+  	<div class="gradient">
+  
+	</div>
+    
+<div id='Logo'></div>
+
+<div id='master'>
+  	<div id='GaugeOne' >
+  		<h4>REVENUE</h4>
+  		
+  		<div class='hvr-grow Gauge' id='SquareOne'>
+  			<div class= 'metric' id='YourRevenue'></div>
+  			<div>
+    		<canvas id="foo"/>
+		</div>
+  			<!-- <img src='GaugeDesign.png' class='gaugeNotch'/> -->
+  			<div class='percentPosition' id='percentRevenue'></div>
+  		</div>
+  		<div class='Summary' id='revenueSum'></div>
+  	</div>
+
+  	<div id='GaugeTwo'>
+  		<h4>FUNDING</h4>
+  		<div class='hvr-grow Gauge' id='SquareTwo'>
+  			<div class= 'metric' id='YourFunding'></div>
+  			<div>
+    		<canvas id="noo"/>
+		</div>
+  			<!-- <img src='GaugeDesign.png' class='gaugeNotch'/> -->
+  			<div class='percentPosition' id='percentFunding'></div>
+  			<!-- <div id='FundingArrow'></div> -->	
+  		</div>
+  		<div class='Summary' id='fundingSum'></div>
+  	</div>
+
+  	<div id='GaugeThree'>
+  		<h4 >SPEED OF GROWTH</h4>
+  		<div class='hvr-grow Gauge' id='SquareThree'>
+  			<div class= 'metric' id='YourGrowth'></div>
+  			<div>
+    		<canvas id="poo"/>
+		</div>
+  			<!-- <img src='GaugeDesign.png' class='gaugeNotch'/> -->
+  			<div class='percentPosition' id='percentGrowth'></div>
+  			<!-- <div id='GrowthArrow'></div> -->
+  		</div>
+  		<div class='Summary' id='growthSum'></div>
+  		
+  	</div>
+
+  	<div id='GaugeFour'>
+  		<h4 id='speedTitle'>RECENT PRESS</h4>
+  		<div class='hvr-grow Gauge' id='SquareFour'>
+  			<div class= 'metric' id='YourPress'></div>
+  			<div>
+    		<canvas id="zoo"/>
+		</div>
+  			<!-- <img src='GaugeDesign.png' class='gaugeNotch'/> -->
+  			<div class='percentPosition' id='percentPost'></div>
+  			<!-- <div id='PostArrow'></div> -->
+  		</div>
+  		<div class='Summary' id='postSum'></div>
+  	</div>
+</div>
+
+    <!-- domo.js optional utils -->
+    <script src="domo.js"></script>
+    <script src="gauge.min.js"></script>
+    <script src="app.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,144 @@
+/*body {
+    margin: 0;
+    background-image: url('BackgroundGradient.png')
+
+}*/
+
+body {
+  background: linear-gradient(-23deg, #ECE9E6, #FFFFFF 80%)
+}
+
+h4 {
+    /*font-weight: 400;*/
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+
+
+#master {
+
+	display: block;
+	padding-top: 0%;
+	padding-left: 5%;
+	width: 100%;
+}
+
+#Logo {
+    margin-left: 2%;
+    margin-top: 2%;
+}
+#GaugeOne {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    margin: 2%;
+
+}
+#GaugeTwo {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    margin: 2%;
+}
+#GaugeThree {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    margin: 2%;
+}
+#GaugeFour {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+    margin: .5%;
+}
+
+/*.hvr-color-change:hover {
+	color: green;
+}*/
+
+.metric {
+    font-family: 'Raleway', sans-serif;
+	font-weight:100;
+	color:white;
+	text-align:center;
+	padding-top: 60%;
+	font-size: 250%;
+}
+
+.Gauge {
+	width: 200px; 
+	height: 200px; 
+	border-radius: 4%; 
+	/*border-style: solid; 
+	border-width: 2px; */
+	/*border-color: #363636;*/
+	background-color: #8C8C8C;
+
+}
+
+/*.gaugeNotch {
+	height: 200px; 
+	width: 210px; 
+	margin-top: -110%; 
+	margin-left: -2.5%
+}*/
+
+.percentPosition {
+
+	font-family: 'Raleway', sans-serif;
+	font-size: 100%;
+	margin-top: -65%;
+	color: white;
+	text-align: center;
+	visibility: hidden;
+}
+
+.Summary {
+	font-family: 'Raleway', sans-serif;
+	text-align: left;
+	margin-top: 4%;
+	font-size: 90%;
+	color: #8C8C8C;
+}
+
+/*.triangle-up {
+	width: 2px;
+	height: auto;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 16px solid green;
+	margin-top: -16%;
+	margin-left: 14%;
+}
+
+.triangle-down {
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 100px solid red;
+}*/
+
+.subtext{
+	font-family: 'Raleway', sans-serif;
+	margin-top: 5%;
+	font-size: 30%;
+}
+
+#foo, #noo, #poo, #zoo {
+	width: 200px;
+	height: auto;
+	margin-top: -90%
+}
+
+.positivePercent {
+	color: green;
+	
+}
+
+.negativePercent {
+	color: red;
+
+}
