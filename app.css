@@ -142,3 +142,8 @@ h4 {
 	color: red;
 
 }
+
+#revenueSum, #fundingSum, #growthSum, #postSum {
+	width: 200px;
+	font-size: 13px;
+}

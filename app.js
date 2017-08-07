@@ -13,13 +13,17 @@ domo.get('/data/v1/CompanyInfo')
         document.getElementById('Logo').innerHTML = '<img id="logo" src="' + CompanyInfo[0]['logo_url'] + '" alt="Company Logo" height="60" max-width="auto">';
 
         // document.body.style.background = "linear-gradient(0deg, " + CompanyInfo[0]['Primary_HEX'] + ", white 70%)";
-        if (CompanyInfo[0]['Primary_HEX'].indexOf("Empty") <= 0) {
-            var hexCode = '#99ccee'
-            // console.log(CompanyInfo[0]['Primary_HEX'])
-            // console.log('No hex provided')
-        } else {
+        if (CompanyInfo[0]['Primary_HEX'] !== '') {
+            
             var hexCode = CompanyInfo[0]['Primary_HEX']
-            // console.log('Hex provided')
+            console.log('Hex provided')
+            console.log(CompanyInfo[0]['Primary_HEX'])
+
+        } else {
+    
+            var hexCode = '#99ccee'
+            console.log(CompanyInfo[0]['Primary_HEX'])
+            console.log('No hex provided')
         }
 
 
@@ -30,7 +34,12 @@ domo.get('/data/v1/CompanyInfo')
         //Percent from avg
         var difference = CompanyInfo[0]['revenue'] - CompanyInfo[0]['avg_revenue']
 
-        var percentPre100 = difference / CompanyInfo[0]['avg_revenue']
+        if(CompanyInfo[0]['avg_revenue'] == 0){
+            var percentPre100 = difference / 1
+        }
+        else{
+            var percentPre100 = difference / CompanyInfo[0]['avg_revenue']
+        }
 
         var PercentComp = Math.round(percentPre100 * 100) / 10
 
@@ -42,12 +51,20 @@ domo.get('/data/v1/CompanyInfo')
         //NLP description
         if (CompanyInfo[0]['revenue'] > CompanyInfo[0]['avg_revenue']) {
 
-            var response = CompanyInfo[0]['reference company name'] + "'s revenue is <span class='positivePercent'>" + PercentDifferenceFormatted + "</span><br> above the competitor average <br>at a total of $" + companyRevenue + '.'
+            var response = CompanyInfo[0]['reference company name'] + "'s revenue is <span class='positivePercent'>" + PercentDifferenceFormatted + "</span> above the competitor average at a total of $" + companyRevenue + '.'
 
             document.getElementById('revenueSum').innerHTML = response;
             // document.getElementById('RevenueArrow').innerHTML = '<div class="triangle-up"></div>'
-        } else {
-            var response = CompanyInfo[0]['reference company name'] + "'s revenue is <span class='negativePercent'>" + AbsoluteValuePercent + "% </span><br> below the competitor <br>average of $" + nFormatter(CompanyInfo[0]['avg_revenue']) + '.'
+        } 
+
+        else if(CompanyInfo[0]['revenue'] == CompanyInfo[0]['avg_revenue']){
+            var response = CompanyInfo[0]['reference company name'] + "'s revenue is right on <br>the competitor average of <br>$" + nFormatter(CompanyInfo[0]['avg_revenue']) + '.'
+
+            document.getElementById('revenueSum').innerHTML = response;
+        }
+
+        else {
+            var response = CompanyInfo[0]['reference company name'] + "'s estimated annual revenue is <span class='negativePercent'>" + AbsoluteValuePercent + "% </span> below the competitor average of $" + nFormatter(CompanyInfo[0]['avg_revenue']) + '.'
 
             document.getElementById('revenueSum').innerHTML = response;
             // document.getElementById('RevenueArrow').innerHTML = '<div class="triangle-down"></div>'
@@ -85,8 +102,17 @@ domo.get('/data/v1/CompanyInfo')
 
         //Percent from avg
         var difference = CompanyInfo[0]['funding'] - CompanyInfo[0]['avg_funding']
+        console.log('Avg Funding: ', CompanyInfo[0]['avg_funding'])
+        console.log('Company Funding: ', CompanyInfo[0]['funding'])
 
-        var percentPre100 = difference / CompanyInfo[0]['avg_funding']
+
+        if(CompanyInfo[0]['avg_funding'] == 0){
+            var percentPre100 = difference / 1
+        }
+        else{
+            var percentPre100 = difference / CompanyInfo[0]['avg_funding']
+        }
+
 
         var PercentComp = Math.round(percentPre100 * 100) / 10
 
@@ -98,12 +124,19 @@ domo.get('/data/v1/CompanyInfo')
         //NLP description
         if (CompanyInfo[0]['funding'] > CompanyInfo[0]['avg_funding']) {
 
-            var response = CompanyInfo[0]['reference company name'] + ' has raised $' + companyFunding + " <br>in funding. That's <span class='positivePercent'>" + PercentDifferenceFormatted + "</span> <br>more than the competition."
+            var response = CompanyInfo[0]['reference company name'] + ' has raised $' + companyFunding + " in funding. That's <span class='positivePercent'>" + PercentDifferenceFormatted + "</span> more than the competition."
 
 
             document.getElementById('fundingSum').innerHTML = response;
-        } else {
-            var response = CompanyInfo[0]['reference company name'] + ' has raised $' + companyFunding + " <br>in funding. That's <span class='negativePercent'>" + AbsoluteValuePercent + "% </span> less than<br> the competition."
+
+        } else if(CompanyInfo[0]['funding'] == CompanyInfo[0]['avg_funding']){
+            var response = CompanyInfo[0]['reference company name'] + ' has raised $' + companyFunding + " in funding. That's right on the competitive average."
+
+            document.getElementById('fundingSum').innerHTML = response;
+        }
+
+        else{
+            var response = CompanyInfo[0]['reference company name'] + ' has raised $' + companyFunding + " in funding. That's <span class='negativePercent'>" + AbsoluteValuePercent + "% </span> less than the competition."
 
             document.getElementById('fundingSum').innerHTML = response;
         }
@@ -137,7 +170,12 @@ domo.get('/data/v1/CompanyInfo')
         //Percent from avg
         var difference = CompanyInfo[0]['growth'] - CompanyInfo[0]['avg_growth']
 
-        var percentPre100 = difference / CompanyInfo[0]['avg_growth']
+        if(CompanyInfo[0]['avg_growth'] == 0){
+            var percentPre100 = difference / 1
+        }
+        else{
+            var percentPre100 = difference / CompanyInfo[0]['avg_growth']
+        }
 
         var PercentComp = Math.round(percentPre100 * 100) / 10
 
@@ -150,11 +188,19 @@ domo.get('/data/v1/CompanyInfo')
         //NLP description
         if (CompanyInfo[0]['growth'] > CompanyInfo[0]['avg_growth']) {
 
-            var response = CompanyInfo[0]['reference company name'] + "'s workforce has grown <br><span class='positivePercent'>" + PercentDifferenceFormatted + "</span> faster than the competition. <br>That's " + nFormatter(CompanyInfo[0]['growth']) + ' new employees annually.'
+            var response = CompanyInfo[0]['reference company name'] + "'s workforce has grown at <span class='positivePercent'>" + PercentDifferenceFormatted + "</span>. That's " + nFormatter(CompanyInfo[0]['growth']) + ' new employees annually.'
 
             document.getElementById('growthSum').innerHTML = response;
-        } else {
-            var response = CompanyInfo[0]['reference company name'] + "'s annual employee<br> growth is <span class='negativePercent'>" + AbsoluteValuePercent + '%</span> below the<br> industry average of ' + nFormatter(CompanyInfo[0]['avg_growth']) + '.'
+        } 
+
+        else if(CompanyInfo[0]['growth'] == CompanyInfo[0]['avg_growth']){
+            var response = CompanyInfo[0]['reference company name'] + "'s workforce has grown <span class='positivePercent'>" + PercentDifferenceFormatted + "</span>. That's " + nFormatter(CompanyInfo[0]['growth']) + ' new employees annually.'
+
+            document.getElementById('growthSum').innerHTML = response;
+        }
+
+        else {
+            var response = CompanyInfo[0]['reference company name'] + "'s annual employee growth is <span class='negativePercent'>" + AbsoluteValuePercent + '%</span> below the industry average of ' + nFormatter(CompanyInfo[0]['avg_growth']) + '.'
 
             document.getElementById('growthSum').innerHTML = response;
         }
@@ -189,7 +235,12 @@ domo.get('/data/v1/CompanyInfo')
         //Percent from avg
         var difference = CompanyInfo[0]['post_last_week'] - CompanyInfo[0]['avg_post']
 
-        var percentPre100 = difference / CompanyInfo[0]['avg_post']
+        if(CompanyInfo[0]['avg_post'] == 0){
+            var percentPre100 = difference / 1
+        }
+        else{
+            var percentPre100 = difference / CompanyInfo[0]['avg_post']
+        }
 
         var PercentComp = Math.round(percentPre100 * 100) / 10
 
@@ -224,15 +275,15 @@ domo.get('/data/v1/CompanyInfo')
         //NLP description
         if (CompanyInfo[0]['post_last_week'] > CompanyInfo[0]['avg_post']) {
 
-            var response = "Read all about it! " + CompanyInfo[0]['reference company name'] + "<br> is in the news <span class='positivePercent'>" + PercentDifferenceFormatted + '</span> more<br> than their competitors.'
+            var response = "Read all about it! " + CompanyInfo[0]['reference company name'] + " is in the news <span class='positivePercent'>" + PercentDifferenceFormatted + '</span> more<br> than their competitors.'
 
             document.getElementById('postSum').innerHTML = response;
-        } else if (CompanyInfo[0]['post_last_week'] = CompanyInfo[0]['avg_post']) {
-            var response = "There were " + nFormatter(CompanyInfo[0]['post_last_week']) + ' articles about <br>' + CompanyInfo[0]['reference company name'] + " last week. That's right <br>on the competitor average."
+        } else if (CompanyInfo[0]['post_last_week'] == CompanyInfo[0]['avg_post']) {
+            var response = "There were " + nFormatter(CompanyInfo[0]['post_last_week']) + ' articles about ' + CompanyInfo[0]['reference company name'] + " last week. That's right on the competitor average."
 
             document.getElementById('postSum').innerHTML = response;
         } else {
-            var response = "There were " + nFormatter(CompanyInfo[0]['post_last_week']) + ' articles about <br>' + CompanyInfo[0]['reference company name'] + " last week. That's <span class='negativePercent'>" + AbsoluteValuePercent + '%</span> less <br>than the competitor average.'
+            var response = "There were " + nFormatter(CompanyInfo[0]['post_last_week']) + ' articles about ' + CompanyInfo[0]['reference company name'] + " last week. That's <span class='negativePercent'>" + AbsoluteValuePercent + '%</span> less than the competitor average.'
 
             document.getElementById('postSum').innerHTML = response;
         }
